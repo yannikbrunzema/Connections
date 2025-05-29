@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Room</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background-color: #f5f5f5;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #player-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        #player-list li {
+            background: #ffffff;
+            margin: 0.5rem 0;
+            padding: 0.75rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Current Players in Room</h1>
+<ul id="player-list">
+    <!-- Player names will be dynamically added here -->
+</ul>
+
+<!-- WebSocket client dependencies -->
+<!-- Add SockJS script above STOMP -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+
+<script>
+    let stompClient = null;
+
+    function connectToRoom() {
+        const pathParts = window.location.pathname.split('/');
+        const roomId = pathParts[pathParts.length - 1];
+        console.log('Room ID:', roomId);
+
+        // === Fetch initial players via HTTP GET ===
+        fetch(`/get-room-members?roomId=${encodeURIComponent(roomId)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch initial player list');
+                }
+                return response.json();
+            })
+            .then(players => {
+                console.log('Initial players:', players);
+                updatePlayerListUI(players);
+            })
+            .catch(error => {
+                console.error('Error fetching players:', error);
+            });
+
+        // === Use SockJS for WebSocket fallback compatibility ===
+        const socket = new SockJS('/websocket-connect');
+        stompClient = StompJs.Stomp.over(socket);
+
+        stompClient.reconnectDelay = 5000; // auto reconnect after 5 seconds
+
+        stompClient.onConnect = (frame) => {
+            console.log('Connected to WebSocket:', frame);
+            stompClient.subscribe('/broadcast/room/' + roomId, (message) => {
+                const updatedPlayers = JSON.parse(message.body);
+                console.log('Room players updated:', updatedPlayers);
+                updatePlayerListUI(updatedPlayers);
+            });
+        };
+
+        stompClient.onWebSocketError = (error) => {
+            console.error('WebSocket error:', error);
+        };
+
+        stompClient.onStompError = (frame) => {
+            console.error('Broker reported error:', frame.headers['message']);
+            console.error('Additional details:', frame.body);
+        };
+
+        stompClient.activate();
+    }
+
+    function updatePlayerListUI(players) {
+        const playerListElem = document.getElementById('player-list');
+        playerListElem.innerHTML = '';
+        players.forEach(player => {
+            const li = document.createElement('li');
+            li.textContent = player.name;
+            playerListElem.appendChild(li);
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', connectToRoom);
+    // On tab/window close
+    window.addEventListener('beforeunload', () => {
+        const playerUID = sessionStorage.getItem('playerUid');
+        const pathParts = window.location.pathname.split('/');
+        const roomId = pathParts[pathParts.length - 1];
+
+        if (playerUID) {
+            const payload = {
+                playerUID: playerUID,
+                roomId: roomId
+            };
+
+            // Use fetch with keepalive
+            fetch('/leave-room', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload),
+                keepalive: true
+            });
+        }
+    });
+</script>

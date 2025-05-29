@@ -1,0 +1,9 @@
+{
+  "difficulty": "Easy",
+  "categories": {
+    "Planets": ["Mercury", "Venus", "Earth", "Mars"],
+    "Musical Instruments": ["Violin", "Drum", "Flute", "Guitar"],
+    "Programming Languages": ["Python", "Java", "C++", "Rust"],
+    "Flowers": ["Rose", "Tulip", "Daisy", "Lily"]
+  }
+}

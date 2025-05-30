@@ -7,7 +7,7 @@ public class Player
 {
     private String UID;
     private String name;
-    private int guessesRemaining;
+    private int guessesRemaining = 4; // Default value, overwritten on player add/remove
     private boolean isEliminated;
 
     public Player(final String name)

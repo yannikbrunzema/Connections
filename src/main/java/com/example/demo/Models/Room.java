@@ -1,6 +1,7 @@
 package com.example.demo.Models;
 
 import com.example.demo.Exceptions.PlayerNotFoundException;
+import com.example.demo.Services.PuzzleService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,19 +9,28 @@ import java.util.Random;
 
 public class Room
 {
-    private static final int MAX_GUESSES = 4;
-    public static final int MAX_PLAYERS = 4;
-    private String id;
-    private List<Player> players;
+    private boolean roomStarted = false;
 
+    private static final int MAX_GUESSES = 4;
+    private static final int MAX_PLAYERS = 4;
+    private String id;
+    private PuzzleService roomPuzzleService;
+    private Player roomOwner;
+    private List<Player> players;
 
     public Room(Player player, Puzzle puzzle, String id)
     {
         this.id = id;
         this.players = new ArrayList<Player>();
+        this.roomPuzzleService = new PuzzleService(puzzle);
+        this.roomOwner = player;
         this.players.add(player);
     }
 
+    public PuzzleService getRoomPuzzleService()
+    {
+        return this.roomPuzzleService;
+    }
 
     public String getId()
     {
@@ -29,12 +39,25 @@ public class Room
 
     public boolean AddPlayer(Player player)
     {
-        if (players.size() >= MAX_PLAYERS)
+        if (players.size() >= MAX_PLAYERS || roomStarted)
             return false;
 
         players.add(player);
         this.OnPlayerCountChanged();
         return true;
+    }
+
+    // TODO: Add logic for starting a room
+    public boolean startRoom(String ownerUserID)
+    {
+        if(roomOwner.getUID().equals(ownerUserID))
+            roomStarted = true;
+        return roomStarted;
+    }
+
+    public boolean isRoomStarted()
+    {
+        return roomStarted;
     }
 
     public void removePlayer(String playerUid) throws PlayerNotFoundException
@@ -46,7 +69,7 @@ public class Room
             throw new PlayerNotFoundException("Couldn't find a player with UID: " + player.getUID());
 
         players.remove(player);
-        this.OnPlayerCountChanged();
+        this.OnActivePlayerRemoved(player);
     }
 
     public List<Player> getRoomPlayers()
@@ -77,6 +100,17 @@ public class Room
                 return true;
         }
         return false;
+    }
+
+
+    private void OnActivePlayerRemoved(Player player)
+    {
+        int guessesRemaining = player.getGuessesRemaining();
+        for (int i = 0; i < guessesRemaining; i++)
+        {
+            var randomOtherPlayer = this.players.get(new Random().nextInt(this.players.size()));
+            randomOtherPlayer.incrementGuessesRemaining(1);
+        }
     }
 
     private void OnPlayerCountChanged()

@@ -8,6 +8,7 @@ import com.example.demo.Exceptions.PlayerNotFoundException;
 import com.example.demo.Exceptions.RoomFullException;
 import com.example.demo.Models.Player;
 import com.example.demo.DTO.RoomCreationResult;
+import com.example.demo.Services.PuzzleService;
 import com.example.demo.Services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -79,6 +80,21 @@ public class RoomController
         catch (Exception e)
         {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @GetMapping("/get-room-puzzle")
+    public ResponseEntity<PuzzleService> getRoomPuzzleState(@RequestParam String roomId)
+    {
+        try
+        {
+            var room = roomService.getRoom(roomId);
+            var puzzleService = room.getRoomPuzzleService();
+            return ResponseEntity.ok(puzzleService);
+        }
+        catch (InvalidRoomIdException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 }

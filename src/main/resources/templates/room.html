@@ -1,26 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Game Room</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            padding: 2rem;
+            margin: 0;
+            height: 100vh;
+            display: flex;
             background-color: #f5f5f5;
+        }
+
+        /* Main content area - left 4/5 of screen */
+        main {
+            flex: 4;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Sidebar with player list - right 1/5 of screen */
+        aside {
+            flex: 1;
+            background: #ffffff;
+            padding: 2rem;
+            box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
         }
 
         h1 {
             color: #333;
+            margin-top: 0;
         }
 
         #player-list {
             list-style: none;
             padding-left: 0;
+            margin: 0;
         }
 
         #player-list li {
-            background: #ffffff;
+            background: #f9f9f9;
             margin: 0.5rem 0;
             padding: 0.75rem;
             border-radius: 4px;
@@ -30,15 +50,30 @@
 </head>
 <body>
 
-<h1>Current Players in Room</h1>
-<ul id="player-list">
-    <!-- Player names will be dynamically added here -->
-</ul>
+<main>
+    <!-- Your main content here -->
+    <h1>Connections Connect</h1>
+
+</main>
+
+<aside>
+    <h1>Current Players in Room</h1>
+    <ul id="player-list">
+        <!-- Player names will be dynamically added here -->
+    </ul>
+</aside>
+
+</body>
+</html>
+
+
 
 <!-- WebSocket client dependencies -->
 <!-- Add SockJS script above STOMP -->
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script src="puzzle.js"></script>
+
 
 <script>
     let stompClient = null;
@@ -96,12 +131,78 @@
         playerListElem.innerHTML = '';
         players.forEach(player => {
             const li = document.createElement('li');
-            li.textContent = player.name;
+            li.textContent = player.name + " Guesses Remaining: " + player.guessesRemaining;
             playerListElem.appendChild(li);
         });
     }
 
+    function fetchRoomPuzzle() {
+        const pathParts = window.location.pathname.split('/');
+        const roomId = pathParts[pathParts.length - 1]; // assuming URL like /room/abc123
+
+        fetch(`/get-room-puzzle?roomId=${encodeURIComponent(roomId)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch puzzle');
+                }
+                return response.json();
+            })
+            .then(puzzleData => {
+                console.log('Puzzle data:', puzzleData);
+                // Use puzzleData.allPuzzleWords or puzzleData.puzzle.categories etc.
+                createPuzzleGrid(puzzleData.allPuzzleWords);
+            })
+            .catch(error => {
+                console.error('Error loading puzzle:', error);
+            });
+    }
+
+
+
+    function createPuzzleGrid(words) {
+        const main = document.querySelector('main');
+        const grid = document.createElement('div');
+
+        // Clear existing grid if any
+        const oldGrid = document.getElementById('puzzle-grid');
+        if (oldGrid) {
+            oldGrid.remove();
+        }
+
+        grid.id = 'puzzle-grid';
+        grid.style.display = 'grid';
+        grid.style.gridTemplateColumns = 'repeat(4, 120px)';
+        grid.style.gridGap = '1rem';
+        grid.style.justifyContent = 'center';
+        grid.style.marginTop = '2rem';
+
+        words.forEach(word => {
+            const tile = document.createElement('div');
+            tile.className = 'tile';
+            tile.innerText = word;
+            tile.style.background = '#fff';
+            tile.style.border = '2px solid #ccc';
+            tile.style.borderRadius = '8px';
+            tile.style.padding = '1rem';
+            tile.style.textAlign = 'center';
+            tile.style.cursor = 'pointer';
+            tile.style.transition = 'background 0.2s, border-color 0.2s';
+            tile.style.userSelect = 'none';
+
+            tile.addEventListener('click', () => {
+                tile.classList.toggle('selected');
+                tile.style.background = tile.classList.contains('selected') ? '#cce5ff' : '#fff';
+                tile.style.borderColor = tile.classList.contains('selected') ? '#007bff' : '#ccc';
+            });
+
+            grid.appendChild(tile);
+        });
+
+        main.appendChild(grid);
+    }
+
     window.addEventListener('DOMContentLoaded', connectToRoom);
+    window.addEventListener('DOMContentLoaded', fetchRoomPuzzle)
     // On tab/window close
     window.addEventListener('beforeunload', () => {
         const playerUID = sessionStorage.getItem('playerUid');

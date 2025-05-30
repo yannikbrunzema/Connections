@@ -19,7 +19,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class RoomService
 {
-    private SimpMessagingTemplate messagingTemplate;
+    private final SimpMessagingTemplate messagingTemplate;
     private final Map<String, Room> rooms = new ConcurrentHashMap<>();
     private final Puzzle puzzle;
 
@@ -36,6 +36,13 @@ public class RoomService
         var room = new Room(player, puzzle, roomId);
         rooms.put(roomId, room);
         return new RoomCreationResult(player, roomId, puzzle);
+    }
+
+    public Room getRoom(String roomId) throws InvalidRoomIdException
+    {
+        if(!rooms.containsKey(roomId))
+            throw new InvalidRoomIdException("Room ID " + roomId + " does not exist.");
+        return rooms.get(roomId);
     }
 
     public RoomJoinResult joinRoom(Player player, String roomId) throws InvalidRoomIdException, RoomFullException

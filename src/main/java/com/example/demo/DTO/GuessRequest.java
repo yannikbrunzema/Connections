@@ -2,12 +2,14 @@ package com.example.demo.DTO;
 
 import com.example.demo.Models.Player;
 
+import java.util.List;
+
 public class GuessRequest
 {
     private Player player;
-    private String guess;
+    private List<String> guess;
 
-    public GuessRequest(Player player, String guess)
+    public GuessRequest(Player player, List<String> guess)
     {
         this.player = player;
         this.guess = guess;
@@ -18,7 +20,7 @@ public class GuessRequest
         return this.player;
     }
 
-    public String getGuess()
+    public List<String> getGuess()
     {
         return this.guess;
     }

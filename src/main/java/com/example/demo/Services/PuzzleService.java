@@ -72,15 +72,4 @@ public class PuzzleService
         }
         return false;
     }
-
-    @Override
-    public String toString()
-    {
-        var sb = new StringBuilder();
-        for (Map.Entry<String, List<String>> entry : this.puzzle.getCategories().entrySet())
-        {
-            sb.append((entry.getKey() + ": " + entry.getValue()));
-        }
-        return sb.toString();
-    }
 }

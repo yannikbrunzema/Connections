@@ -27,12 +27,14 @@ public class WebSocketController
     public void submitGuess(@DestinationVariable String roomId, @Payload GuessRequest request) throws InvalidRoomIdException
     {
         var room = roomService.getRoom(roomId);
-        var canSubmit = room.canSubmitGuess(request.getPlayer());
+        // TODO: Should getPlayerFromID be private and consumed internally?
+        var player = room.getPlayerFromID(request.getPlayerID());
+        var canSubmit = room.canSubmitGuess(player);
         if (canSubmit)
         {
             var correct = room.getRoomPuzzleService().submitGuessAndValidate(request.getGuess());
-            var result = new GuessSubmitResult(request.getPlayer(), request.getGuess(), correct);
-            messagingTemplate.convertAndSend("/topic/guess-submit", result);
+            var result = new GuessSubmitResult(player, request.getGuess(), correct);
+            messagingTemplate.convertAndSend("/broadcast/room/" + roomId + "/submit" , result);
         }
     }
 }

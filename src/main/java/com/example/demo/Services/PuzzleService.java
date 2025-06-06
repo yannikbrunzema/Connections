@@ -64,9 +64,15 @@ public class PuzzleService
 
         for (Map.Entry<String, List<String>> entry : categories.entrySet())
         {
-            if(guess.equals(entry.getValue()) && ! currentSolvedCategories.containsKey(entry.getKey()))
+            var correctWords = entry.getValue();
+            var category = entry.getKey();
+
+            guess.sort(String::compareTo);
+            correctWords.sort(String::compareTo);
+
+            if (guess.equals(correctWords) && !currentSolvedCategories.containsKey(category))
             {
-                currentSolvedCategories.put(entry.getKey(), entry.getValue());
+                this.currentSolvedCategories.put(category, guess);
                 return true;
             }
         }

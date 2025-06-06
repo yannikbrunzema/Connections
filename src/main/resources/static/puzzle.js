@@ -1,6 +1,7 @@
 let stompClient = null;
 let currentPuzzleWords = [];
 
+
 function connectToRoom() {
     const pathParts = window.location.pathname.split('/');
     const roomId = pathParts[pathParts.length - 1];
@@ -59,6 +60,19 @@ function updatePlayerListUI(players) {
     });
 }
 
+function copyGameCode() {
+    const pathParts = window.location.pathname.split('/');
+    const roomId = pathParts[pathParts.length - 1];
+
+    navigator.clipboard.writeText(roomId)
+        .then(() => {
+            console.log('Code copied to clipboard', roomId);
+            alert('Code copied to clipboard');
+        })
+        .catch(err => {
+            console.error('Failed to copy code:', err);
+        });
+}
 
 function renderPuzzle() {
     const pathParts = window.location.pathname.split('/');

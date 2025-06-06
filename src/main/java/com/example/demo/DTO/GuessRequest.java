@@ -6,18 +6,18 @@ import java.util.List;
 
 public class GuessRequest
 {
-    private Player player;
+    private String playerID;
     private List<String> guess;
 
-    public GuessRequest(Player player, List<String> guess)
+    public GuessRequest(String player, List<String> guess)
     {
-        this.player = player;
+        this.playerID = player;
         this.guess = guess;
     }
 
-    public Player getPlayer()
+    public String getPlayerID()
     {
-        return this.player;
+        return this.playerID;
     }
 
     public List<String> getGuess()

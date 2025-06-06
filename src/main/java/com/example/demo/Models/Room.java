@@ -126,7 +126,7 @@ public class Room
             this.players.get(new Random().nextInt(this.players.size())).incrementGuessesRemaining(leftover);
     }
 
-    private Player getPlayerFromID(String playerId)
+    public Player getPlayerFromID(String playerId)
     {
         for (Player player : players)
         {

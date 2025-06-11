@@ -23,18 +23,28 @@ function connectToRoom() {
             console.error('Error fetching players:', error);
         });
 
-    // === Use SockJS for WebSocket fallback compatibility ===
+    // Socket connection
     const socket = new SockJS('/websocket-connect');
     stompClient = StompJs.Stomp.over(socket);
 
-    stompClient.reconnectDelay = 5000; // auto reconnect after 5 seconds
+    stompClient.reconnectDelay = 5000;
 
     stompClient.onConnect = (frame) => {
         console.log('Connected to WebSocket:', frame);
+
+        // Subscription for player list updates
         stompClient.subscribe('/broadcast/room/' + roomId, (message) => {
+            console.log('Message received on /broadcast/room:', message.body);
             const updatedPlayers = JSON.parse(message.body);
-            console.log('Room players updated:', updatedPlayers);
             updatePlayerListUI(updatedPlayers);
+        });
+
+        // Subscription for guess submit results
+        stompClient.subscribe('/broadcast/room/' + roomId + '/submit', (message) => {
+
+            const result = JSON.parse(message.body);
+            console.log(JSON.stringify(result, null, 2));
+            onSubmitResultReceived(result);
         });
     };
 
@@ -51,6 +61,7 @@ function connectToRoom() {
 }
 
 function updatePlayerListUI(players) {
+    console.log(players);
     const playerListElem = document.getElementById('player-list');
     playerListElem.innerHTML = '';
     players.forEach(player => {
@@ -94,7 +105,27 @@ function renderPuzzle() {
         .catch(error => console.error('Error loading puzzle:', error));
 }
 
-function createPuzzleGrid(words) {
+function onTileSelected(tile)
+{
+    console.log("tile selected");
+    const isSelected = tile.classList.contains('selected');
+    const selectedTiles = document.querySelectorAll('.tile.selected');
+
+    if (!isSelected && selectedTiles.length >= 4) {
+        return;
+    }
+
+    // Toggle selection state
+    tile.classList.toggle('selected');
+
+    // Update visual styles
+    const nowSelected = tile.classList.contains('selected');
+    tile.style.background = nowSelected ? '#cce5ff' : '#fff';
+    tile.style.borderColor = nowSelected ? '#007bff' : '#ccc';
+}
+
+function createPuzzleGrid(words)
+{
     const container = document.getElementById('grid-container');
     container.innerHTML = ''; // Clear old grid if present
 
@@ -118,28 +149,7 @@ function createPuzzleGrid(words) {
         tile.style.cursor = 'pointer';
         tile.style.transition = 'background 0.2s, border-color 0.2s';
         tile.style.userSelect = 'none';
-
-        tile.addEventListener('click', () => {
-            tile.classList.toggle('selected');
-            tile.style.background = tile.classList.contains('selected') ? '#cce5ff' : '#fff';
-            tile.style.borderColor = tile.classList.contains('selected') ? '#007bff' : '#ccc';
-
-            const pathParts = window.location.pathname.split('/');
-            const roomId = pathParts[pathParts.length - 1];
-            const playerUID = sessionStorage.getItem('playerUid');
-            const word = tile.innerText;
-
-            if (stompClient && stompClient.connected && playerUID) {
-                stompClient.publish({
-                    destination: `/app/room/${roomId}/tile-selection`,
-                    body: JSON.stringify({
-                        playerId: playerUID,
-                        word: word,
-                        selected: tile.classList.contains('selected')
-                    })
-                });
-            }
-        });
+        tile.addEventListener('click', () => onTileSelected(tile));
 
         grid.appendChild(tile);
     });
@@ -149,7 +159,8 @@ function createPuzzleGrid(words) {
 
 
 
-function onSubmitClicked() {
+function onSubmitClicked()
+{
     const selectedTiles = Array.from(document.querySelectorAll('.tile.selected'))
         .map(tile => tile.innerText);
 
@@ -158,7 +169,6 @@ function onSubmitClicked() {
     const roomId = pathParts[pathParts.length - 1];
 
     if (selectedTiles.length !== 4) {
-        alert('Please select exactly 4 tiles before submitting.');
         return;
     }
 
@@ -173,9 +183,53 @@ function onSubmitClicked() {
     }
 }
 
+function addHistoryEntry(historyJSON)
+{
+    const playerName = historyJSON.playerName;
+    const guessArray = historyJSON.guess;
+    const correct = historyJSON.correct;
 
-function shuffle(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+    const historyList = document.getElementById('guess-history');
+
+    const listItem = document.createElement('li');
+
+    listItem.classList.add('history-entry'); // Optional for styling
+
+    const playerCol = document.createElement('span');
+    playerCol.classList.add('history-player');
+    playerCol.textContent = playerName;
+
+    const guessCol = document.createElement('span');
+    guessCol.classList.add('history-guess');
+    guessCol.textContent = guessArray.join(', ');
+
+    listItem.appendChild(playerCol);
+    listItem.appendChild(guessCol);
+
+    if (correct)
+        listItem.style.backgroundColor = "#90EE90";
+    else
+        listItem.style.backgroundColor = "#FF474C";
+
+    historyList.appendChild(listItem);
+}
+
+
+
+
+function onSubmitResultReceived(resultJson)
+{
+    addHistoryEntry(resultJson.history);
+    updatePlayerListUI(resultJson.playerState.players);
+    // Update history
+    // Update grid if guess correct
+}
+
+
+function shuffle(array)
+{
+    for (let i = array.length - 1; i > 0; i--)
+    {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
@@ -183,7 +237,8 @@ function shuffle(array) {
 
 
 // On tab/window close
-window.addEventListener('beforeunload', () => {
+window.addEventListener('beforeunload', () =>
+{
     const playerUID = sessionStorage.getItem('playerUid');
     const pathParts = window.location.pathname.split('/');
     const roomId = pathParts[pathParts.length - 1];
@@ -206,14 +261,16 @@ window.addEventListener('beforeunload', () => {
     }
 });
 
-function onShuffleClicked() {
+function onShuffleClicked()
+{
     shuffle(currentPuzzleWords);
     createPuzzleGrid(currentPuzzleWords);
 }
 
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () =>
+{
     connectToRoom();
-    document.getElementById('shuffle-btn').addEventListener('click', window.onShuffleClicked);
+    document.getElementById('shuffle-btn').addEventListener('click', onShuffleClicked);
     renderPuzzle();
 });

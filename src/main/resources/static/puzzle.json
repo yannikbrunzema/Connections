@@ -1,9 +1,25 @@
 {
   "difficulty": "Easy",
-  "categories": {
-    "Planets": ["Mercury", "Venus", "Earth", "Mars"],
-    "Musical Instruments": ["Violin", "Drum", "Flute", "Guitar"],
-    "Programming Languages": ["Python", "Java", "C++", "Rust"],
-    "Flowers": ["Rose", "Tulip", "Daisy", "Lily"]
-  }
+  "categories": [
+    {
+      "name": "Planets",
+      "color": "green",
+      "items": ["Mercury", "Venus", "Earth", "Mars"]
+    },
+    {
+      "name": "Musical Instruments",
+      "color": "yellow",
+      "items": ["Violin", "Drum", "Flute", "Guitar"]
+    },
+    {
+      "name": "Programming Languages",
+      "color": "blue",
+      "items": ["Python", "Java", "C++", "Rust"]
+    },
+    {
+      "name": "Flowers",
+      "color": "purple",
+      "items": ["Rose", "Tulip", "Daisy", "Lily"]
+    }
+  ]
 }

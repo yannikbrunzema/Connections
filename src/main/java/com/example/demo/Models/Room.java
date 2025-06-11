@@ -17,6 +17,7 @@ public class Room
     private PuzzleService roomPuzzleService;
     private Player roomOwner;
     private List<Player> players;
+    private List<HistoryEntry> history;
 
     public Room(Player player, Puzzle puzzle, String id)
     {
@@ -25,6 +26,7 @@ public class Room
         this.roomPuzzleService = new PuzzleService(puzzle);
         this.roomOwner = player;
         this.players.add(player);
+        this.history = new ArrayList<HistoryEntry>();
     }
 
     public PuzzleService getRoomPuzzleService()
@@ -90,7 +92,12 @@ public class Room
         return list;
     }
 
-    public boolean canSubmitGuess(Player player)
+    public List<HistoryEntry> getHistory()
+    {
+        return this.history;
+    }
+
+    private boolean canSubmitGuess(Player player)
     {
         if(!players.contains(player))
             return false;
@@ -100,6 +107,18 @@ public class Room
                 return true;
         }
         return false;
+    }
+
+    public boolean SubmitGuess(Player player, List<String> guess)
+    {
+        if(!canSubmitGuess(player))
+            return false;
+
+        var result = this.roomPuzzleService.submitGuessAndValidate(guess, player);
+
+        this.history.add(new HistoryEntry(result, guess, player.getName()));
+
+        return result;
     }
 
 

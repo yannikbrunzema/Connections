@@ -2,6 +2,8 @@ package com.example.demo.Controllers;
 
 import com.example.demo.DTO.GuessRequest;
 import com.example.demo.DTO.GuessSubmitResult;
+import com.example.demo.DTO.PlayerStateDTO;
+import com.example.demo.DTO.PuzzleStateDTO;
 import com.example.demo.Exceptions.InvalidRoomIdException;
 import com.example.demo.Services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +31,10 @@ public class WebSocketController
         var room = roomService.getRoom(roomId);
         // TODO: Should getPlayerFromID be private and consumed internally?
         var player = room.getPlayerFromID(request.getPlayerID());
-        var canSubmit = room.canSubmitGuess(player);
-        if (canSubmit)
-        {
-            var correct = room.getRoomPuzzleService().submitGuessAndValidate(request.getGuess());
-            var result = new GuessSubmitResult(player, request.getGuess(), correct);
-            messagingTemplate.convertAndSend("/broadcast/room/" + roomId + "/submit" , result);
-        }
+        var correct = room.SubmitGuess(player, request.getGuess());
+        var history = room.getHistory();
+        var result = new GuessSubmitResult(new PlayerStateDTO(room.getRoomPlayers()), new PuzzleStateDTO(room.getRoomPuzzleService()),
+                player, request.getGuess(), correct, (history.get(history.size()-1)));
+        messagingTemplate.convertAndSend("/broadcast/room/" + roomId + "/submit" , result);
     }
 }

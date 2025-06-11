@@ -1,5 +1,6 @@
 package com.example.demo.Services;
 
+import com.example.demo.Models.Player;
 import com.example.demo.Models.Puzzle;
 import org.springframework.stereotype.Service;
 
@@ -25,9 +26,10 @@ public class PuzzleService
     public List<String> getAllPuzzleWords()
     {
         var result = new ArrayList<String>();
-        for (List<String> words: puzzle.getCategories().values())
+        var categories = puzzle.getCategories();
+        for (var category : categories)
         {
-            result.addAll(words);
+            result.addAll(category.getItems());
         }
         return result;
     }
@@ -47,7 +49,7 @@ public class PuzzleService
         return this.currentSolvedCategories;
     }
 
-    public boolean submitGuessAndValidate(List<String> guess)
+    public boolean submitGuessAndValidate(List<String> guess, Player submitter)
     {
         if (guess == null)
             return false;
@@ -62,20 +64,23 @@ public class PuzzleService
 
         var categories = puzzle.getCategories();
 
-        for (Map.Entry<String, List<String>> entry : categories.entrySet())
+        for (var category : categories)
         {
-            var correctWords = entry.getValue();
-            var category = entry.getKey();
+            var correctWords = category.getItems();
+            var topic = category.getName();
 
             guess.sort(String::compareTo);
             correctWords.sort(String::compareTo);
 
-            if (guess.equals(correctWords) && !currentSolvedCategories.containsKey(category))
+            if (guess.equals(correctWords) && !currentSolvedCategories.containsKey(topic))
             {
-                this.currentSolvedCategories.put(category, guess);
+                this.currentSolvedCategories.put(topic, guess);
                 return true;
             }
         }
+
+        // Remove a guess if not correct
+        submitter.setGuessesRemaining(submitter.getGuessesRemaining() - 1);
         return false;
     }
 }

@@ -2,6 +2,7 @@
 package com.example.demo.Models;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Puzzle
 {
@@ -24,6 +25,13 @@ public class Puzzle
         // No-args constructor for JSON deserialization
         public Category() {}
 
+        public Category(String name, String color, List<String> items)
+        {
+            this.name = name;
+            this.color = color;
+            this.items = items;
+        }
+
         public String getColor() {
             return color;
         }
@@ -41,6 +49,27 @@ public class Puzzle
         }
 
         public void setName(String name) { this.name = name; }
+
+        @Override
+        public boolean equals(Object o)
+        {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            Category category = (Category) o;
+            return Objects.equals(name, category.name) &&
+                    Objects.equals(color, category.color) &&
+                    Objects.equals(items, category.items);
+        }
+
+        @Override
+        public int hashCode()
+        {
+            return Objects.hash(name, color, items);
+        }
+
+
     }
 
     // No-args constructor for JSON deserialization

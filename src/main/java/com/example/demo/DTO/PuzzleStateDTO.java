@@ -4,28 +4,20 @@ import com.example.demo.Models.Puzzle;
 import com.example.demo.Services.PuzzleService;
 
 import java.util.List;
-import java.util.Map;
 
 public class PuzzleStateDTO
 {
-    private Puzzle puzzle;
     private int numSolvedCategories;
-    private List<String> allPuzzleWords;
-    private Map<String, List<String>> currentSolved;
+    private List<String> unsolvedWords;
+    private List<Puzzle.Category> currentSolved;
     private boolean puzzleSolved;
 
     public PuzzleStateDTO(PuzzleService service)
     {
-        this.puzzle = service.getPuzzle();
         this.numSolvedCategories = service.getNumSolvedCategories();
-        this.allPuzzleWords = service.getAllPuzzleWords();
+        this.unsolvedWords = service.getUnsolvedWords();
         this.currentSolved = service.getCurrentSolved();
         this.puzzleSolved = service.isPuzzleSolved();
-    }
-
-    public Puzzle getPuzzle()
-    {
-        return puzzle;
     }
 
     public int getNumSolvedCategories()
@@ -33,12 +25,12 @@ public class PuzzleStateDTO
         return numSolvedCategories;
     }
 
-    public List<String> getAllPuzzleWords()
+    public List<String> getUnsolvedWords()
     {
-        return allPuzzleWords;
+        return unsolvedWords;
     }
 
-    public Map<String, List<String>> getCurrentSolved()
+    public List<Puzzle.Category> getCurrentSolved()
     {
         return currentSolved;
     }

@@ -10,7 +10,7 @@ import java.util.*;
 public class PuzzleService
 {
     private final Puzzle puzzle;
-    private final Map<String, List<String>> currentSolvedCategories = new HashMap<>();
+    private final List<Puzzle.Category> currentSolvedCategories = new ArrayList<Puzzle.Category>();
 
     // Need Puzzle to be a bean to autowire here
     public PuzzleService(Puzzle puzzle)
@@ -23,13 +23,14 @@ public class PuzzleService
         return this.puzzle;
     }
 
-    public List<String> getAllPuzzleWords()
+    public List<String> getUnsolvedWords()
     {
         var result = new ArrayList<String>();
         var categories = puzzle.getCategories();
         for (var category : categories)
         {
-            result.addAll(category.getItems());
+            if (!currentSolvedCategories.contains(category))
+                result.addAll(category.getItems());
         }
         return result;
     }
@@ -44,7 +45,7 @@ public class PuzzleService
         return currentSolvedCategories.size();
     }
 
-    public Map<String, List<String>> getCurrentSolved()
+    public List<Puzzle.Category> getCurrentSolved()
     {
         return this.currentSolvedCategories;
     }
@@ -67,14 +68,15 @@ public class PuzzleService
         for (var category : categories)
         {
             var correctWords = category.getItems();
-            var topic = category.getName();
 
             guess.sort(String::compareTo);
             correctWords.sort(String::compareTo);
 
-            if (guess.equals(correctWords) && !currentSolvedCategories.containsKey(topic))
+            // TODO: We should probably throw a DuplicateGuessException which we handle on the frontend here.
+            // Just going to mark the guess as false for now
+            if (guess.equals(correctWords) && !currentSolvedCategories.contains(category))
             {
-                this.currentSolvedCategories.put(topic, guess);
+                this.currentSolvedCategories.add(new Puzzle.Category(category.getName(), category.getColor(), category.getItems()));
                 return true;
             }
         }

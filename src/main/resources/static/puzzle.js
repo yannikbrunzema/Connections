@@ -1,5 +1,6 @@
 let stompClient = null;
 let currentPuzzleWords = [];
+let solvedCategories = []
 
 
 function connectToRoom() {
@@ -66,12 +67,14 @@ function updatePlayerListUI(players) {
     playerListElem.innerHTML = '';
     players.forEach(player => {
         const li = document.createElement('li');
+        li.id = player.uid;
         li.textContent = player.name + " Guesses Remaining: " + player.guessesRemaining;
         playerListElem.appendChild(li);
     });
 }
 
-function copyGameCode() {
+function copyGameCode()
+{
     const pathParts = window.location.pathname.split('/');
     const roomId = pathParts[pathParts.length - 1];
 
@@ -97,10 +100,12 @@ function renderPuzzle() {
             return response.json();
         })
         .then(puzzle => {
-            const words = Object.values(puzzle.allPuzzleWords).flat();
+            const words = Object.values(puzzle.unsolvedWords).flat();
+            const currentSolvedCategories = puzzle.currentSolved;
             currentPuzzleWords = words;
+            solvedCategories = currentSolvedCategories;
             shuffle(words);
-            createPuzzleGrid(words);
+            createPuzzleGrid(words, solvedCategories);
         })
         .catch(error => console.error('Error loading puzzle:', error));
 }
@@ -124,8 +129,7 @@ function onTileSelected(tile)
     tile.style.borderColor = nowSelected ? '#007bff' : '#ccc';
 }
 
-function createPuzzleGrid(words)
-{
+function createPuzzleGrid(unsolvedWords, solvedCategories) {
     const container = document.getElementById('grid-container');
     container.innerHTML = ''; // Clear old grid if present
 
@@ -137,7 +141,24 @@ function createPuzzleGrid(words)
     grid.style.justifyContent = 'center';
     grid.style.marginTop = '2rem';
 
-    words.forEach(word => {
+    solvedCategories.forEach(category => {
+        const solvedTile = document.createElement('div');
+        solvedTile.className = 'solved-tile';
+        solvedTile.innerText = category.name;
+        solvedTile.style.background = category.color; // Use the category's color
+        solvedTile.style.color = '#000'; // Text color (white for contrast)
+        solvedTile.style.gridColumn = 'span 4'; // Span all 4 columns
+        solvedTile.style.borderRadius = '8px';
+        solvedTile.style.padding = '1rem';
+        solvedTile.style.textAlign = 'center';
+        solvedTile.style.fontWeight = 'bold';
+        solvedTile.style.userSelect = 'none';
+
+        grid.appendChild(solvedTile);
+    });
+
+    // Now add unsolved word tiles
+    unsolvedWords.forEach(word => {
         const tile = document.createElement('div');
         tile.className = 'tile';
         tile.innerText = word;
@@ -156,6 +177,7 @@ function createPuzzleGrid(words)
 
     container.appendChild(grid);
 }
+
 
 
 
@@ -215,14 +237,31 @@ function addHistoryEntry(historyJSON)
 }
 
 
-
+function toggleResultAnimation(submitterId, correct)
+{
+    if(!correct)
+    {
+        const playerListItem = document.getElementById(submitterId);
+        playerListItem.classList.remove('shake');
+        void playerListItem.offsetWidth;
+        playerListItem.classList.add('shake');
+    }
+}
 
 function onSubmitResultReceived(resultJson)
 {
+    // cache state
+    const updatedPuzzleState = resultJson.updatedPuzzleState;
+    currentPuzzleWords = updatedPuzzleState.unsolvedWords;
+    solvedCategories = updatedPuzzleState.currentSolved;
+
     addHistoryEntry(resultJson.history);
     updatePlayerListUI(resultJson.playerState.players);
-    // Update history
-    // Update grid if guess correct
+    toggleResultAnimation(resultJson.guessSubmitter.uid, resultJson.correct);
+
+    if(resultJson.correct)
+        createPuzzleGrid(updatedPuzzleState.unsolvedWords, updatedPuzzleState.currentSolved);
+
 }
 
 
@@ -264,7 +303,7 @@ window.addEventListener('beforeunload', () =>
 function onShuffleClicked()
 {
     shuffle(currentPuzzleWords);
-    createPuzzleGrid(currentPuzzleWords);
+    createPuzzleGrid(currentPuzzleWords, solvedCategories);
 }
 
 

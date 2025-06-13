@@ -10,6 +10,7 @@ import com.example.demo.Models.Room;
 import com.example.demo.DTO.RoomCreationResult;
 import com.example.demo.Util.IDGenerator;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class RoomService
 {
+    private final int ROOM_CLEANUP_INTERVAL_MINUTES = 5;
     private final SimpMessagingTemplate messagingTemplate;
     private final Map<String, Room> rooms = new ConcurrentHashMap<>();
     private final Puzzle puzzle;
@@ -29,6 +31,18 @@ public class RoomService
         this.messagingTemplate = messagingTemplate;
         this.puzzle = puzzle;
     }
+
+    // TODO: Implement more comprehensive room cleanup
+    @Scheduled(fixedRate = 1000 * 60 * ROOM_CLEANUP_INTERVAL_MINUTES)
+    public void cleanUpRooms()
+    {
+        for (Room room : rooms.values())
+        {
+            if(room.getRoomPlayers().isEmpty())
+                rooms.remove(room.getId());
+        }
+    }
+
 
     public RoomCreationResult createRoom(Player player)
     {

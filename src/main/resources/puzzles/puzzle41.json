@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SCUBA GEAR",
+            "color": "yellow",
+            "items": [
+                "Fins",
+                "Mask",
+                "Snorkel",
+                "Tank"
+            ]
+        },
+        {
+            "name": "PUNCTUATION MARKS",
+            "color": "green",
+            "items": [
+                "Colon",
+                "Comma",
+                "Hyphen",
+                "Period"
+            ]
+        },
+        {
+            "name": "RUN QUICKLY",
+            "color": "blue",
+            "items": [
+                "Bolt",
+                "Dash",
+                "Race",
+                "Sprint"
+            ]
+        },
+        {
+            "name": "___ CAT",
+            "color": "purple",
+            "items": [
+                "Doja",
+                "Fat",
+                "House",
+                "Jungle"
+            ]
+        }
+    ]
+}

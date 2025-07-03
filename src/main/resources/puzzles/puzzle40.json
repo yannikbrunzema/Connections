@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BOTTLED WATER BRANDS",
+            "color": "yellow",
+            "items": [
+                "Dasani",
+                "Evian",
+                "Fiji",
+                "Voss"
+            ]
+        },
+        {
+            "name": "SLANG FOR COFFEE",
+            "color": "green",
+            "items": [
+                "Brew",
+                "Java",
+                "Joe",
+                "Mud"
+            ]
+        },
+        {
+            "name": "ISLAND COUNTRIES",
+            "color": "blue",
+            "items": [
+                "Cuba",
+                "Japan",
+                "Malta",
+                "Palau"
+            ]
+        },
+        {
+            "name": "CEREAL MASCOTS",
+            "color": "purple",
+            "items": [
+                "Lucky",
+                "Pop",
+                "Sam",
+                "Tony"
+            ]
+        }
+    ]
+}

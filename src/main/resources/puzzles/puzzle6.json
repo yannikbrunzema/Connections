@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "LEG PARTS",
+            "color": "yellow",
+            "items": [
+                "Ankle",
+                "Knee",
+                "Shin",
+                "Thigh"
+            ]
+        },
+        {
+            "name": "BABY ANIMALS",
+            "color": "green",
+            "items": [
+                "Calf",
+                "Cub",
+                "Joey",
+                "Kid"
+            ]
+        },
+        {
+            "name": "SLANG FOR TOILET",
+            "color": "blue",
+            "items": [
+                "Can",
+                "Head",
+                "John",
+                "Throne"
+            ]
+        },
+        {
+            "name": "___ FISH THAT AREN\u2019T FISH",
+            "color": "purple",
+            "items": [
+                "Cray",
+                "Jelly",
+                "Silver",
+                "Star"
+            ]
+        }
+    ]
+}

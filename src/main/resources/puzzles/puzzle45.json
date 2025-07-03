@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MOVIE TITLE CITIES",
+            "color": "yellow",
+            "items": [
+                "Chicago",
+                "Munich",
+                "Philadelphia",
+                "Rio"
+            ]
+        },
+        {
+            "name": "FASHION MAGAZINES",
+            "color": "green",
+            "items": [
+                "Allure",
+                "Elle",
+                "Glamour",
+                "W"
+            ]
+        },
+        {
+            "name": "STORMS",
+            "color": "blue",
+            "items": [
+                "Blizzard",
+                "Cyclone",
+                "Squall",
+                "Tornado"
+            ]
+        },
+        {
+            "name": "COCKTAILS",
+            "color": "purple",
+            "items": [
+                "Cosmopolitan",
+                "Hurricane",
+                "Manhattan",
+                "Screwdriver"
+            ]
+        }
+    ]
+}

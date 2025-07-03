@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "TREES",
+            "color": "yellow",
+            "items": [
+                "Ash",
+                "Cedar",
+                "Oak",
+                "Poplar"
+            ]
+        },
+        {
+            "name": "LAND FORMATIONS",
+            "color": "green",
+            "items": [
+                "Canyon",
+                "Mountain",
+                "Plateau",
+                "Valley"
+            ]
+        },
+        {
+            "name": "BAGEL FLAVORS",
+            "color": "blue",
+            "items": [
+                "Everything",
+                "Onion",
+                "Plain",
+                "Poppy"
+            ]
+        },
+        {
+            "name": "STREETS ON SCREEN",
+            "color": "purple",
+            "items": [
+                "Elm",
+                "Fear",
+                "Jump",
+                "Sesame"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "LONG SANDWICHES",
+            "color": "yellow",
+            "items": [
+                "Hero",
+                "Hoagie",
+                "Grinder",
+                "Sub"
+            ]
+        },
+        {
+            "name": "DATING APPS",
+            "color": "green",
+            "items": [
+                "Bumble",
+                "Hinge",
+                "Match",
+                "Tinder"
+            ]
+        },
+        {
+            "name": "VAMPIRE MOVIES",
+            "color": "blue",
+            "items": [
+                "Blade",
+                "Lost boys",
+                "Near dark",
+                "Twilight"
+            ]
+        },
+        {
+            "name": "ADAMS",
+            "color": "purple",
+            "items": [
+                "Ant",
+                "Driver",
+                "Scott",
+                "West"
+            ]
+        }
+    ]
+}

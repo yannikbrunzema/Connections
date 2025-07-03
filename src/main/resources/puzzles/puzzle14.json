@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BIRD SOUNDS",
+            "color": "yellow",
+            "items": [
+                "Caw",
+                "Chirp",
+                "Cluck",
+                "Tweet"
+            ]
+        },
+        {
+            "name": "COLORS",
+            "color": "green",
+            "items": [
+                "Brown",
+                "Pink",
+                "Turquoise",
+                "Violet"
+            ]
+        },
+        {
+            "name": "FISHING GEAR",
+            "color": "blue",
+            "items": [
+                "Lure",
+                "Reel",
+                "Rod",
+                "Tackle"
+            ]
+        },
+        {
+            "name": "FICTIONAL PIRATES",
+            "color": "purple",
+            "items": [
+                "Hook",
+                "Jones",
+                "Silver",
+                "Sparrow"
+            ]
+        }
+    ]
+}

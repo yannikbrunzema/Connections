@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "UNITS OF LENGTH",
+            "color": "yellow",
+            "items": [
+                "Foot",
+                "Inch",
+                "Mile",
+                "Yard"
+            ]
+        },
+        {
+            "name": "TYPES OF PAINT",
+            "color": "green",
+            "items": [
+                "Acrylic",
+                "Oil",
+                "Tempera",
+                "Watercolor"
+            ]
+        },
+        {
+            "name": "DEEP-FRIED FOOD",
+            "color": "blue",
+            "items": [
+                "Falafel",
+                "Katsu",
+                "Samosa",
+                "Schnitzel"
+            ]
+        },
+        {
+            "name": "STARTS OF U.S. COINS",
+            "color": "purple",
+            "items": [
+                "Dim",
+                "Nick",
+                "Pen",
+                "Quart"
+            ]
+        }
+    ]
+}

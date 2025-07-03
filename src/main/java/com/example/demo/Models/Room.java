@@ -49,6 +49,22 @@ public class Room
         return true;
     }
 
+    private void resetRoomState()
+    {
+        this.OnPlayerCountChanged();
+        this.history.clear();
+    }
+
+    public boolean setNewPuzzle(String playerId, Puzzle puzzle)
+    {
+        if (playerId == null || !playerId.equals(this.roomOwner.getUID()))
+            return false;
+
+        this.resetRoomState();
+        this.roomPuzzleService = new PuzzleService(puzzle);
+        return true;
+    }
+
     // TODO: Add logic for starting a room
     public boolean startRoom(String ownerUserID)
     {
@@ -77,19 +93,6 @@ public class Room
     public List<Player> getRoomPlayers()
     {
         return this.players;
-    }
-
-    public List<String> getActiveRoomPlayers()
-    {
-        List<String> list = new ArrayList<>();
-        for (Player player : players)
-        {
-            if (player.getGuessesRemaining() > 0)
-            {
-                list.add(player.getName());
-            }
-        }
-        return list;
     }
 
     public List<HistoryEntry> getHistory()
@@ -121,10 +124,26 @@ public class Room
         return result;
     }
 
+    public boolean isLoss()
+    {
+        for (Player p : players)
+        {
+            if(p.getGuessesRemaining() >= 0)
+                return false;
+        }
+        return true;
+    }
 
     private void OnActivePlayerRemoved(Player player)
     {
+        if (this.players.isEmpty())
+            return;
+
         int guessesRemaining = player.getGuessesRemaining();
+
+        if (player.equals(this.roomOwner))
+            this.roomOwner = this.players.get(new Random().nextInt(this.players.size()));
+
         for (int i = 0; i < guessesRemaining; i++)
         {
             var randomOtherPlayer = this.players.get(new Random().nextInt(this.players.size()));

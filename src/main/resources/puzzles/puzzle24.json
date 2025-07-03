@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "DESSERTS",
+            "color": "yellow",
+            "items": [
+                "Cheesecake",
+                "Flan",
+                "Mousse",
+                "Tiramisu"
+            ]
+        },
+        {
+            "name": "MILD OATHS",
+            "color": "green",
+            "items": [
+                "Darn",
+                "Fudge",
+                "Heck",
+                "Shoot"
+            ]
+        },
+        {
+            "name": "ANIMALS WITH TUSKS",
+            "color": "blue",
+            "items": [
+                "Elephant",
+                "Hippo",
+                "Narwhal",
+                "Warthog"
+            ]
+        },
+        {
+            "name": "MUSTACHES",
+            "color": "purple",
+            "items": [
+                "Handlebar",
+                "Horseshoe",
+                "Pencil",
+                "Walrus"
+            ]
+        }
+    ]
+}

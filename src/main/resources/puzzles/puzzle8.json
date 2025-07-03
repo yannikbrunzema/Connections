@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SPORTS",
+            "color": "yellow",
+            "items": [
+                "Cricket",
+                "Fencing",
+                "Polo",
+                "Squash"
+            ]
+        },
+        {
+            "name": "TOPS",
+            "color": "green",
+            "items": [
+                "Cami",
+                "Halter",
+                "Tank",
+                "Tee"
+            ]
+        },
+        {
+            "name": "VEGETABLES",
+            "color": "blue",
+            "items": [
+                "Beet",
+                "Carrot",
+                "Corn",
+                "Onion"
+            ]
+        },
+        {
+            "name": "INSECTS",
+            "color": "purple",
+            "items": [
+                "Ant",
+                "Beetle",
+                "Mantis",
+                "Termite"
+            ]
+        }
+    ]
+}

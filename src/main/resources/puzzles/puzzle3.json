@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SNEAKER BRANDS",
+            "color": "yellow",
+            "items": [
+                "Adidas",
+                "Nike",
+                "Puma",
+                "Reebok"
+            ]
+        },
+        {
+            "name": "MUSICALS BEGINNING WITH \u201cC\u201d",
+            "color": "green",
+            "items": [
+                "Cabaret",
+                "Carousel",
+                "Cats",
+                "Chicago"
+            ]
+        },
+        {
+            "name": "CLEANING VERBS",
+            "color": "blue",
+            "items": [
+                "Dust",
+                "Mop",
+                "Sweep",
+                "Vacuum"
+            ]
+        },
+        {
+            "name": "___ MAN SUPERHEROES",
+            "color": "purple",
+            "items": [
+                "Bat",
+                "Iron",
+                "Spider",
+                "Super"
+            ]
+        }
+    ]
+}

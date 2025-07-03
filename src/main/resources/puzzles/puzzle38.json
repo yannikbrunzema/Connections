@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "TIMEKEEPING DEVICES",
+            "color": "yellow",
+            "items": [
+                "Clock",
+                "Hourglass",
+                "Sundial",
+                "Watch"
+            ]
+        },
+        {
+            "name": "HAIRSTYLES",
+            "color": "green",
+            "items": [
+                "Bob",
+                "Crop",
+                "Pixie",
+                "Shag"
+            ]
+        },
+        {
+            "name": "UNITS OF MEASURE",
+            "color": "blue",
+            "items": [
+                "Hertz",
+                "Mole",
+                "Newton",
+                "Second"
+            ]
+        },
+        {
+            "name": "DR. ___",
+            "color": "purple",
+            "items": [
+                "Evil",
+                "J",
+                "No",
+                "Pepper"
+            ]
+        }
+    ]
+}

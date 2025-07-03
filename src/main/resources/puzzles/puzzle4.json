@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "STREAMING SERVICES",
+            "color": "yellow",
+            "items": [
+                "Hulu",
+                "Netflix",
+                "Peacock",
+                "Prime"
+            ]
+        },
+        {
+            "name": "CONDIMENTS",
+            "color": "green",
+            "items": [
+                "Ketchup",
+                "Mayo",
+                "Relish",
+                "Tartar"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR SAD",
+            "color": "blue",
+            "items": [
+                "Blue",
+                "Down",
+                "Glum",
+                "Low"
+            ]
+        },
+        {
+            "name": "CLUE CHARACTERS",
+            "color": "purple",
+            "items": [
+                "Green",
+                "Mustard",
+                "Plum",
+                "Scarlet"
+            ]
+        }
+    ]
+}

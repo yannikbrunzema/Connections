@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BEDS",
+            "color": "yellow",
+            "items": [
+                "Bunk",
+                "Canopy",
+                "Murphy",
+                "Trundle"
+            ]
+        },
+        {
+            "name": "FAMOUS BROTHERS",
+            "color": "green",
+            "items": [
+                "Jonas",
+                "Marx",
+                "Warner",
+                "Wright"
+            ]
+        },
+        {
+            "name": "HONDAS",
+            "color": "blue",
+            "items": [
+                "Accord",
+                "Civic",
+                "Passport",
+                "Pilot"
+            ]
+        },
+        {
+            "name": "VIDEO GAME CHARACTERS",
+            "color": "purple",
+            "items": [
+                "Crash",
+                "Link",
+                "Mario",
+                "Sonic"
+            ]
+        }
+    ]
+}

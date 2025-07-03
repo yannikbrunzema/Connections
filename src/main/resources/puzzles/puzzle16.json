@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "NECKWEAR",
+            "color": "yellow",
+            "items": [
+                "Ascot",
+                "Bolo",
+                "Scarf",
+                "Tie"
+            ]
+        },
+        {
+            "name": "SHIP DIRECTIONS",
+            "color": "green",
+            "items": [
+                "Bow",
+                "Port",
+                "Starboard",
+                "Stern"
+            ]
+        },
+        {
+            "name": "DETERGENTS",
+            "color": "blue",
+            "items": [
+                "All",
+                "Era",
+                "Gain",
+                "Tide"
+            ]
+        },
+        {
+            "name": "___ TRIANGLE",
+            "color": "purple",
+            "items": [
+                "Acute",
+                "Bermuda",
+                "Love",
+                "Right"
+            ]
+        }
+    ]
+}

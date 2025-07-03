@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "FABRICS",
+            "color": "yellow",
+            "items": [
+                "Corduroy",
+                "Denim",
+                "Linen",
+                "Tweed"
+            ]
+        },
+        {
+            "name": "APPARITIONS",
+            "color": "green",
+            "items": [
+                "Ghost",
+                "Phantom",
+                "Specter",
+                "Spirit"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR BOTHER",
+            "color": "blue",
+            "items": [
+                "Needle",
+                "Poke",
+                "Rib",
+                "Tease"
+            ]
+        },
+        {
+            "name": "DISNEY CHARACTERS",
+            "color": "purple",
+            "items": [
+                "Beast",
+                "Genie",
+                "Scar",
+                "Stitch"
+            ]
+        }
+    ]
+}

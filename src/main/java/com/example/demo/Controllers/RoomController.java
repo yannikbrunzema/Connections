@@ -1,13 +1,10 @@
 package com.example.demo.Controllers;
 
-import com.example.demo.DTO.JoinRoomRequest;
-import com.example.demo.DTO.LeaveRoomRequest;
-import com.example.demo.DTO.RoomJoinResult;
+import com.example.demo.DTO.*;
 import com.example.demo.Exceptions.InvalidRoomIdException;
 import com.example.demo.Exceptions.PlayerNotFoundException;
 import com.example.demo.Exceptions.RoomFullException;
 import com.example.demo.Models.Player;
-import com.example.demo.DTO.RoomCreationResult;
 import com.example.demo.Services.PuzzleService;
 import com.example.demo.Services.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +24,20 @@ public class RoomController
     public RoomCreationResult createRoom(@RequestBody Player player)
     {
         return roomService.createRoom(player);
+    }
+
+    @PostMapping("/new-puzzle")
+    public ResponseEntity<?> newPuzzle(@RequestBody NewPuzzleRequest request) throws InvalidRoomIdException
+    {
+        try
+        {
+            this.roomService.updateRoomPuzzle(request.getRoomId(), request.getPlayerId());
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        catch (InvalidRoomIdException e)
+        {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     @PostMapping("/join-room")

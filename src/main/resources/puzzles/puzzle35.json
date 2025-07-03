@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MARSUPIALS",
+            "color": "yellow",
+            "items": [
+                "Kangaroo",
+                "Koala",
+                "Wallaby",
+                "Wombat"
+            ]
+        },
+        {
+            "name": "CHOCOLATE BARS",
+            "color": "green",
+            "items": [
+                "Chunky",
+                "Crunch",
+                "Mars",
+                "Mounds"
+            ]
+        },
+        {
+            "name": "SLANG FOR MONEY",
+            "color": "blue",
+            "items": [
+                "Cheddar",
+                "Dough",
+                "Paper",
+                "Stacks"
+            ]
+        },
+        {
+            "name": "NAKED ___",
+            "color": "purple",
+            "items": [
+                "Eye",
+                "Gun",
+                "Mole rat",
+                "Truth"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MARINE MAMMALS",
+            "color": "yellow",
+            "items": [
+                "Dolphin",
+                "Manatee",
+                "Otter",
+                "Seal"
+            ]
+        },
+        {
+            "name": "BIKE PARTS",
+            "color": "green",
+            "items": [
+                "Brake",
+                "Chain",
+                "Saddle",
+                "Spoke"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR SELL",
+            "color": "blue",
+            "items": [
+                "Hawk",
+                "Move",
+                "Peddle",
+                "Vend"
+            ]
+        },
+        {
+            "name": "COUNTRIES WHEN \u201cA\u201d IS ADDED",
+            "color": "purple",
+            "items": [
+                "Chin",
+                "Cub",
+                "Malt",
+                "Tong"
+            ]
+        }
+    ]
+}

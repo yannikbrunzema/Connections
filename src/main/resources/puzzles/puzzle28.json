@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "WINGED INSECTS",
+            "color": "yellow",
+            "items": [
+                "Fly",
+                "Gnat",
+                "Moth",
+                "Wasp"
+            ]
+        },
+        {
+            "name": "ARITHMETIC OPERATIONS",
+            "color": "green",
+            "items": [
+                "Add",
+                "Divide",
+                "Multiply",
+                "Subtract"
+            ]
+        },
+        {
+            "name": "FISH",
+            "color": "blue",
+            "items": [
+                "Tang",
+                "Tetra",
+                "Skate",
+                "Sole"
+            ]
+        },
+        {
+            "name": "___ CAT",
+            "color": "purple",
+            "items": [
+                "Alley",
+                "Cool",
+                "Copy",
+                "Lap"
+            ]
+        }
+    ]
+}

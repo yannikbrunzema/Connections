@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "DOG BREEDS",
+            "color": "yellow",
+            "items": [
+                "Boxer",
+                "Dalmatian",
+                "Husky",
+                "Poodle"
+            ]
+        },
+        {
+            "name": "ANIMAL NOSES",
+            "color": "green",
+            "items": [
+                "Beak",
+                "Muzzle",
+                "Snout",
+                "Trunk"
+            ]
+        },
+        {
+            "name": "TRAFFIC SIGNS",
+            "color": "blue",
+            "items": [
+                "Detour",
+                "Slow",
+                "Stop",
+                "Yield"
+            ]
+        },
+        {
+            "name": "SOUND ___",
+            "color": "purple",
+            "items": [
+                "Asleep",
+                "Barrier",
+                "Bite",
+                "Wave"
+            ]
+        }
+    ]
+}

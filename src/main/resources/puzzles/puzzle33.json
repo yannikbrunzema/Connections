@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "PLEASANT SMELLS",
+            "color": "yellow",
+            "items": [
+                "Aroma",
+                "Bouquet",
+                "Fragrance",
+                "Scent"
+            ]
+        },
+        {
+            "name": "MUSIC GENRES",
+            "color": "green",
+            "items": [
+                "Blues",
+                "Country",
+                "Funk",
+                "Soul"
+            ]
+        },
+        {
+            "name": "ROCK PAPER SCISSORS",
+            "color": "blue",
+            "items": [
+                "Paper",
+                "Rock",
+                "Scissors",
+                "Shoot"
+            ]
+        },
+        {
+            "name": "MALE ANIMALS",
+            "color": "purple",
+            "items": [
+                "Boar",
+                "Buck",
+                "Bull",
+                "Jack"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SYNONYMS FOR ANGRY",
+            "color": "yellow",
+            "items": [
+                "Furious",
+                "Incensed",
+                "Irate",
+                "Livid"
+            ]
+        },
+        {
+            "name": "THINGS THAT ARE YELLOW",
+            "color": "green",
+            "items": [
+                "Banana",
+                "Canary",
+                "School bus",
+                "Sunflower"
+            ]
+        },
+        {
+            "name": "MARINE BIRDS",
+            "color": "blue",
+            "items": [
+                "Booby",
+                "Gull",
+                "Pelican",
+                "Puffin"
+            ]
+        },
+        {
+            "name": "___ BOYS",
+            "color": "purple",
+            "items": [
+                "Beach",
+                "Beastie",
+                "Hardy",
+                "Lost"
+            ]
+        }
+    ]
+}

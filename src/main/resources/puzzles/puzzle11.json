@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "ANIMAL GROUP NAMES",
+            "color": "yellow",
+            "items": [
+                "Flock",
+                "Pack",
+                "Pod",
+                "School"
+            ]
+        },
+        {
+            "name": "DEADLY SINS",
+            "color": "green",
+            "items": [
+                "Envy",
+                "Greed",
+                "Lust",
+                "Pride"
+            ]
+        },
+        {
+            "name": "SLOW ANIMALS",
+            "color": "blue",
+            "items": [
+                "Loris",
+                "Sloth",
+                "Snail",
+                "Tortoise"
+            ]
+        },
+        {
+            "name": "TRIG FUNCTIONS",
+            "color": "purple",
+            "items": [
+                "Cot",
+                "Sec",
+                "Sin",
+                "Tan"
+            ]
+        }
+    ]
+}

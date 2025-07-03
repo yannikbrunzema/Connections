@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "GRAINS",
+            "color": "yellow",
+            "items": [
+                "Barley",
+                "Oat",
+                "Rye",
+                "Spelt"
+            ]
+        },
+        {
+            "name": "ROYAL AND NOBLE TITLES",
+            "color": "green",
+            "items": [
+                "Baron",
+                "Earl",
+                "King",
+                "Prince"
+            ]
+        },
+        {
+            "name": "UNIVERSITIES",
+            "color": "blue",
+            "items": [
+                "Brown",
+                "Duke",
+                "Howard",
+                "Rice"
+            ]
+        },
+        {
+            "name": "BEST DIRECTOR OSCAR WINNERS",
+            "color": "purple",
+            "items": [
+                "Bong",
+                "Ford",
+                "Lee",
+                "Stone"
+            ]
+        }
+    ]
+}

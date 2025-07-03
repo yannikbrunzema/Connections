@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "COFFEE DRINKS",
+            "color": "yellow",
+            "items": [
+                "Americano",
+                "Cappuccino",
+                "Espresso",
+                "Latte"
+            ]
+        },
+        {
+            "name": "TREE NUTS",
+            "color": "green",
+            "items": [
+                "Almond",
+                "Cashew",
+                "Pecan",
+                "Walnut"
+            ]
+        },
+        {
+            "name": "SHADES OF GREEN",
+            "color": "blue",
+            "items": [
+                "Emerald",
+                "Forest",
+                "Kelly",
+                "Olive"
+            ]
+        },
+        {
+            "name": "MR. ___",
+            "color": "purple",
+            "items": [
+                "Bean",
+                "Clean",
+                "Fox",
+                "Peanut"
+            ]
+        }
+    ]
+}

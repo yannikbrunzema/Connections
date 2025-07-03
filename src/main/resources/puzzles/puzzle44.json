@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MODES OF TRANSPORTATION",
+            "color": "yellow",
+            "items": [
+                "Boat",
+                "Car",
+                "Plane",
+                "Train"
+            ]
+        },
+        {
+            "name": "NBA PLAYERS",
+            "color": "green",
+            "items": [
+                "King",
+                "Magic",
+                "Sun",
+                "Thunder"
+            ]
+        },
+        {
+            "name": "FAST FOOD CHAINS",
+            "color": "blue",
+            "items": [
+                "Checkers",
+                "Outback",
+                "Sonic",
+                "Subway"
+            ]
+        },
+        {
+            "name": "BAND NAMES MINUS COLORS",
+            "color": "purple",
+            "items": [
+                "Day",
+                "Floyd",
+                "Sabbath",
+                "Stripes"
+            ]
+        }
+    ]
+}

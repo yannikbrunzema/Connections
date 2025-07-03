@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "AIRLINES",
+            "color": "yellow",
+            "items": [
+                "Frontier",
+                "Spirit",
+                "United",
+                "Virgin"
+            ]
+        },
+        {
+            "name": "GREEK LETTERS",
+            "color": "green",
+            "items": [
+                "Beta",
+                "Chi",
+                "Delta",
+                "Iota"
+            ]
+        },
+        {
+            "name": "SILENT \u201cG\u201d",
+            "color": "blue",
+            "items": [
+                "Gnat",
+                "Gnaw",
+                "Gnocchi",
+                "Gnome"
+            ]
+        },
+        {
+            "name": "HOMOPHONES",
+            "color": "purple",
+            "items": [
+                "Gnu",
+                "Knew",
+                "New",
+                "Nu"
+            ]
+        }
+    ]
+}

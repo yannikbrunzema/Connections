@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "FACIAL FEATURES",
+            "color": "yellow",
+            "items": [
+                "Cheek",
+                "Eye",
+                "Mouth",
+                "Nose"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR EAT",
+            "color": "green",
+            "items": [
+                "Chow",
+                "Gobble",
+                "Scarf",
+                "Wolf"
+            ]
+        },
+        {
+            "name": "DOG BREEDS, INFORMALLY",
+            "color": "blue",
+            "items": [
+                "Lab",
+                "Peke",
+                "Pit",
+                "Pom"
+            ]
+        },
+        {
+            "name": "MEMBERS OF A TRIO",
+            "color": "purple",
+            "items": [
+                "Amigo",
+                "King",
+                "Stooge",
+                "Tenor"
+            ]
+        }
+    ]
+}

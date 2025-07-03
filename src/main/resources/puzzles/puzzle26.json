@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "HATS",
+            "color": "yellow",
+            "items": [
+                "Beret",
+                "Bowler",
+                "Fedora",
+                "Fez"
+            ]
+        },
+        {
+            "name": "ORGANS",
+            "color": "green",
+            "items": [
+                "Heart",
+                "Kidney",
+                "Liver",
+                "Lung"
+            ]
+        },
+        {
+            "name": "PARTS OF A BOOK",
+            "color": "blue",
+            "items": [
+                "Cover",
+                "Jacket",
+                "Page",
+                "Spine"
+            ]
+        },
+        {
+            "name": "JACK ___",
+            "color": "purple",
+            "items": [
+                "Ass",
+                "Knife",
+                "Pot",
+                "Rabbit"
+            ]
+        }
+    ]
+}

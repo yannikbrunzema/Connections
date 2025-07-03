@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "VEGETABLES THAT ARE ALSO FRUITS",
+            "color": "yellow",
+            "items": [
+                "Cucumber",
+                "Eggplant",
+                "Pepper",
+                "Tomato"
+            ]
+        },
+        {
+            "name": "3-D SHAPES",
+            "color": "green",
+            "items": [
+                "Cone",
+                "Cube",
+                "Pyramid",
+                "Sphere"
+            ]
+        },
+        {
+            "name": "WORDS WITH \u201ci\u201d",
+            "color": "blue",
+            "items": [
+                "Mac",
+                "Pad",
+                "Phone",
+                "Pod"
+            ]
+        },
+        {
+            "name": "WORDS WITH TWO PRONUNCIATIONS",
+            "color": "purple",
+            "items": [
+                "Job",
+                "Lima",
+                "Mobile",
+                "Polish"
+            ]
+        }
+    ]
+}

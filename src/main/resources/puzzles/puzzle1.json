@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "FOOTWEAR",
+            "color": "yellow",
+            "items": [
+                "Boot",
+                "Loafer",
+                "Pump",
+                "Sneaker"
+            ]
+        },
+        {
+            "name": "UNITS OF LENGTH",
+            "color": "green",
+            "items": [
+                "Foot",
+                "League",
+                "Mile",
+                "Yard"
+            ]
+        },
+        {
+            "name": "MAGAZINES",
+            "color": "blue",
+            "items": [
+                "Essence",
+                "People",
+                "Time",
+                "Us"
+            ]
+        },
+        {
+            "name": "LETTER HOMOPHONES",
+            "color": "purple",
+            "items": [
+                "Are",
+                "Queue",
+                "Sea",
+                "Why"
+            ]
+        }
+    ]
+}

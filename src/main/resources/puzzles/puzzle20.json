@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MUSIC GENRES",
+            "color": "yellow",
+            "items": [
+                "Jazz",
+                "Pop",
+                "Punk",
+                "Rap"
+            ]
+        },
+        {
+            "name": "WEB BROWSERS",
+            "color": "green",
+            "items": [
+                "Chrome",
+                "Edge",
+                "Opera",
+                "Safari"
+            ]
+        },
+        {
+            "name": "\u201cLITTLE WOMEN\u201d SISTERS",
+            "color": "blue",
+            "items": [
+                "Amy",
+                "Beth",
+                "Jo",
+                "Meg"
+            ]
+        },
+        {
+            "name": "LIL ___ RAPPERS",
+            "color": "purple",
+            "items": [
+                "Baby",
+                "Jon",
+                "Kim",
+                "Wayne"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BOATS",
+            "color": "yellow",
+            "items": [
+                "Ferry",
+                "Junk",
+                "Tug",
+                "Yacht"
+            ]
+        },
+        {
+            "name": "SANDWICHES",
+            "color": "green",
+            "items": [
+                "Club",
+                "Cuban",
+                "Melt",
+                "Sub"
+            ]
+        },
+        {
+            "name": "CUTS OF BEEF",
+            "color": "blue",
+            "items": [
+                "Flank",
+                "Loin",
+                "Round",
+                "Shank"
+            ]
+        },
+        {
+            "name": "NICKNAMES THAT ARE VERBS",
+            "color": "purple",
+            "items": [
+                "Chuck",
+                "Josh",
+                "Rob",
+                "Sue"
+            ]
+        }
+    ]
+}

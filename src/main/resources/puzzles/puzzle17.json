@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "MUSCLES, INFORMALLY",
+            "color": "yellow",
+            "items": [
+                "Lat",
+                "Pec",
+                "Quad",
+                "Tri"
+            ]
+        },
+        {
+            "name": "AWARDS",
+            "color": "green",
+            "items": [
+                "Cup",
+                "Medal",
+                "Ribbon",
+                "Trophy"
+            ]
+        },
+        {
+            "name": "TITLE TV DOCTORS",
+            "color": "blue",
+            "items": [
+                "Grey",
+                "House",
+                "Howser",
+                "Quinn"
+            ]
+        },
+        {
+            "name": "NFL PLAYERS",
+            "color": "purple",
+            "items": [
+                "Bear",
+                "Bill",
+                "Brown",
+                "Commander"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BOARD GAMES",
+            "color": "yellow",
+            "items": [
+                "Backgammon",
+                "Checkers",
+                "Chess",
+                "Go"
+            ]
+        },
+        {
+            "name": "MATTRESS SIZES",
+            "color": "green",
+            "items": [
+                "Full",
+                "King",
+                "Queen",
+                "Twin"
+            ]
+        },
+        {
+            "name": "THINGS THAT ARE RED",
+            "color": "blue",
+            "items": [
+                "Cherry",
+                "Fire truck",
+                "Ruby",
+                "Stop sign"
+            ]
+        },
+        {
+            "name": "THINGS WITH KEYS",
+            "color": "purple",
+            "items": [
+                "Cryptography",
+                "Florida",
+                "Locksmith",
+                "Piano"
+            ]
+        }
+    ]
+}

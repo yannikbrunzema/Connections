@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "OFF-WHITE SHADES",
+            "color": "yellow",
+            "items": [
+                "Cream",
+                "Eggshell",
+                "Ivory",
+                "Vanilla"
+            ]
+        },
+        {
+            "name": "ANTI-VAMPIRE",
+            "color": "green",
+            "items": [
+                "Crucifix",
+                "Garlic",
+                "Mirror",
+                "Stake"
+            ]
+        },
+        {
+            "name": "KINDS OF MEAT",
+            "color": "blue",
+            "items": [
+                "Beef",
+                "Pork",
+                "Poultry",
+                "Venison"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR ARGUMENT",
+            "color": "purple",
+            "items": [
+                "Row",
+                "Quarrel",
+                "Spat",
+                "Tiff"
+            ]
+        }
+    ]
+}

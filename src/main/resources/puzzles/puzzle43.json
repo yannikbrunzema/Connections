@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "STATES OF MATTER",
+            "color": "yellow",
+            "items": [
+                "Gas",
+                "Liquid",
+                "Plasma",
+                "Solid"
+            ]
+        },
+        {
+            "name": "EDIT MENU COMMANDS",
+            "color": "green",
+            "items": [
+                "Copy",
+                "Cut",
+                "Paste",
+                "Undo"
+            ]
+        },
+        {
+            "name": "DEFEAT BADLY",
+            "color": "blue",
+            "items": [
+                "Crush",
+                "Rout",
+                "Shellac",
+                "Trash"
+            ]
+        },
+        {
+            "name": "ANAGRAMS",
+            "color": "purple",
+            "items": [
+                "Least",
+                "Slate",
+                "Stale",
+                "Tesla"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "FRUIT",
+            "color": "yellow",
+            "items": [
+                "Date",
+                "Kiwi",
+                "Lemon",
+                "Orange"
+            ]
+        },
+        {
+            "name": "COUNTRIES",
+            "color": "green",
+            "items": [
+                "Chad",
+                "Georgia",
+                "Jordan",
+                "Togo"
+            ]
+        },
+        {
+            "name": "BIRDS",
+            "color": "blue",
+            "items": [
+                "Crane",
+                "Jay",
+                "Swallow",
+                "Turkey"
+            ]
+        },
+        {
+            "name": "ZODIAC SYMBOLS",
+            "color": "purple",
+            "items": [
+                "Fish",
+                "Goat",
+                "Scales",
+                "Twins"
+            ]
+        }
+    ]
+}

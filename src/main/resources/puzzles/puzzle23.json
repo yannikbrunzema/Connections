@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "CANDY BARS",
+            "color": "yellow",
+            "items": [
+                "Bounty",
+                "Crunch",
+                "Heath",
+                "Milky way"
+            ]
+        },
+        {
+            "name": "VIDEO GAME CONSOLES",
+            "color": "green",
+            "items": [
+                "Dreamcast",
+                "Genesis",
+                "Switch",
+                "Wii"
+            ]
+        },
+        {
+            "name": "EAR PARTS",
+            "color": "blue",
+            "items": [
+                "Anvil",
+                "Cochlea",
+                "Hammer",
+                "Stirrup"
+            ]
+        },
+        {
+            "name": "BAND NAMES MINUS NUMBERS",
+            "color": "purple",
+            "items": [
+                "Blink",
+                "Maroon",
+                "Sum",
+                "U"
+            ]
+        }
+    ]
+}

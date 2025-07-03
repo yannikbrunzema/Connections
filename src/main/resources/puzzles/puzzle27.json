@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SEVEN DWARFS",
+            "color": "yellow",
+            "items": [
+                "Bashful",
+                "Doc",
+                "Grumpy",
+                "Happy"
+            ]
+        },
+        {
+            "name": "FILE EXTENSIONS",
+            "color": "green",
+            "items": [
+                "Gif",
+                "Pdf",
+                "Tiff",
+                "Zip"
+            ]
+        },
+        {
+            "name": "FLIGHTLESS BIRDS",
+            "color": "blue",
+            "items": [
+                "Emu",
+                "Kiwi",
+                "Ostrich",
+                "Penguin"
+            ]
+        },
+        {
+            "name": "TROPICAL FRUITS",
+            "color": "purple",
+            "items": [
+                "Banana",
+                "Coconut",
+                "Mango",
+                "Pineapple"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "EUROPEAN COUNTRIES",
+            "color": "yellow",
+            "items": [
+                "Denmark",
+                "Greece",
+                "Poland",
+                "Portugal"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR IMITATE",
+            "color": "green",
+            "items": [
+                "Copy",
+                "Echo",
+                "Mimic",
+                "Parrot"
+            ]
+        },
+        {
+            "name": "TOMS",
+            "color": "blue",
+            "items": [
+                "Cruise",
+                "Holland",
+                "Petty",
+                "Waits"
+            ]
+        },
+        {
+            "name": "WORDS SPELLED WITH ROMAN NUMERALS",
+            "color": "purple",
+            "items": [
+                "Dill",
+                "Livid",
+                "Mild",
+                "Mix"
+            ]
+        }
+    ]
+}

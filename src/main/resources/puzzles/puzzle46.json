@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "BIOMES",
+            "color": "yellow",
+            "items": [
+                "Desert",
+                "Forest",
+                "Grassland",
+                "Tundra"
+            ]
+        },
+        {
+            "name": "LIZARDS",
+            "color": "green",
+            "items": [
+                "Chameleon",
+                "Gecko",
+                "Iguana",
+                "Monitor"
+            ]
+        },
+        {
+            "name": "YOGA POSES",
+            "color": "blue",
+            "items": [
+                "Cobra",
+                "Lotus",
+                "Tree",
+                "Warrior"
+            ]
+        },
+        {
+            "name": "DANCES WHEN DOUBLED",
+            "color": "purple",
+            "items": [
+                "Can",
+                "Cha",
+                "Go",
+                "Nae"
+            ]
+        }
+    ]
+}

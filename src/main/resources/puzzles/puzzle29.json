@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "NFL PLAYERS",
+            "color": "yellow",
+            "items": [
+                "Bronco",
+                "Cowboy",
+                "Packer",
+                "Raven"
+            ]
+        },
+        {
+            "name": "PASTA SHAPES",
+            "color": "green",
+            "items": [
+                "Bowtie",
+                "Elbow",
+                "Shell",
+                "Spiral"
+            ]
+        },
+        {
+            "name": "JOINTS",
+            "color": "blue",
+            "items": [
+                "Hip",
+                "Knee",
+                "Shoulder",
+                "Wrist"
+            ]
+        },
+        {
+            "name": "MOVIES WITH \u201c!\u201d",
+            "color": "purple",
+            "items": [
+                "Airplane",
+                "Mother",
+                "Oklahoma",
+                "Them"
+            ]
+        }
+    ]
+}

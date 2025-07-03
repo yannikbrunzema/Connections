@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "WOODWINDS",
+            "color": "yellow",
+            "items": [
+                "Bassoon",
+                "Clarinet",
+                "Flute",
+                "Oboe"
+            ]
+        },
+        {
+            "name": "COVERINGS",
+            "color": "green",
+            "items": [
+                "Cap",
+                "Cover",
+                "Lid",
+                "Top"
+            ]
+        },
+        {
+            "name": "SUNGLASSES",
+            "color": "blue",
+            "items": [
+                "Aviator",
+                "Cat eye",
+                "Wayfarer",
+                "Wraparound"
+            ]
+        },
+        {
+            "name": "SEALS",
+            "color": "purple",
+            "items": [
+                "Harbor",
+                "Harp",
+                "Hooded",
+                "Monk"
+            ]
+        }
+    ]
+}

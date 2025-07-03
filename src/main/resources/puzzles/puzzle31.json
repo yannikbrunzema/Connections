@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SHOE PARTS",
+            "color": "yellow",
+            "items": [
+                "Heel",
+                "Lace",
+                "Sole",
+                "Tongue"
+            ]
+        },
+        {
+            "name": "BOARD GAMES",
+            "color": "green",
+            "items": [
+                "Clue",
+                "Risk",
+                "Sorry",
+                "Trouble"
+            ]
+        },
+        {
+            "name": "FICTIONAL SPIES",
+            "color": "blue",
+            "items": [
+                "Bond",
+                "Hunt",
+                "Ryan",
+                "Smart"
+            ]
+        },
+        {
+            "name": "RUBBER ___",
+            "color": "purple",
+            "items": [
+                "Band",
+                "Cement",
+                "Duckie",
+                "Soul"
+            ]
+        }
+    ]
+}

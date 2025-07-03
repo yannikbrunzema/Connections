@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "'60S BAND MEMBERS",
+            "color": "yellow",
+            "items": [
+                "Beach boy",
+                "Beatle",
+                "Byrd",
+                "Monkee"
+            ]
+        },
+        {
+            "name": "DANCE FADS",
+            "color": "green",
+            "items": [
+                "Dougie",
+                "Macarena",
+                "Mashed potato",
+                "Twist"
+            ]
+        },
+        {
+            "name": "MAGAZINES",
+            "color": "blue",
+            "items": [
+                "Fortune",
+                "Rolling stone",
+                "Vogue",
+                "Wired"
+            ]
+        },
+        {
+            "name": "THINGS WITH LINKS",
+            "color": "purple",
+            "items": [
+                "Chain",
+                "Golf course",
+                "Sausage",
+                "Website"
+            ]
+        }
+    ]
+}

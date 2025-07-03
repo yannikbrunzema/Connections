@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "U.S. COINS",
+            "color": "yellow",
+            "items": [
+                "Dime",
+                "Nickel",
+                "Penny",
+                "Quarter"
+            ]
+        },
+        {
+            "name": "METAL ELEMENTS",
+            "color": "green",
+            "items": [
+                "Iron",
+                "Lead",
+                "Tin",
+                "Zinc"
+            ]
+        },
+        {
+            "name": "LUCKY CHARMS MARSHMALLOWS",
+            "color": "blue",
+            "items": [
+                "Clover",
+                "Horseshoe",
+                "Moon",
+                "Rainbow"
+            ]
+        },
+        {
+            "name": "___ AND ___",
+            "color": "purple",
+            "items": [
+                "Again",
+                "Half",
+                "Neck",
+                "So"
+            ]
+        }
+    ]
+}

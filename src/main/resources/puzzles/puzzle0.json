@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "WET WEATHER",
+            "color": "yellow",
+            "items": [
+                "Hail",
+                "Rain",
+                "Sleet",
+                "Snow"
+            ]
+        },
+        {
+            "name": "NBA TEAMS",
+            "color": "green",
+            "items": [
+                "Bucks",
+                "Heat",
+                "Jazz",
+                "Nets"
+            ]
+        },
+        {
+            "name": "KEYBOARD KEYS",
+            "color": "blue",
+            "items": [
+                "Option",
+                "Return",
+                "Shift",
+                "Tab"
+            ]
+        },
+        {
+            "name": "PALINDROMES",
+            "color": "purple",
+            "items": [
+                "Kayak",
+                "Level",
+                "Mom",
+                "Racecar"
+            ]
+        }
+    ]
+}

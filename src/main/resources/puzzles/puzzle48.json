@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "RELATIVES",
+            "color": "yellow",
+            "items": [
+                "Aunt",
+                "Cousin",
+                "Mother",
+                "Nephew"
+            ]
+        },
+        {
+            "name": "SYNONYMS FOR OFFBEAT",
+            "color": "green",
+            "items": [
+                "Daffy",
+                "Kooky",
+                "Quirky",
+                "Wacky"
+            ]
+        },
+        {
+            "name": "DISNEY DUCKS",
+            "color": "blue",
+            "items": [
+                "Daisy",
+                "Dewey",
+                "Donald",
+                "Scrooge"
+            ]
+        },
+        {
+            "name": "___ CLOCK",
+            "color": "purple",
+            "items": [
+                "Alarm",
+                "Biological",
+                "Cuckoo",
+                "Grandfather"
+            ]
+        }
+    ]
+}

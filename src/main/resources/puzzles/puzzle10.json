@@ -1,0 +1,45 @@
+{
+    "difficulty": "Medium",
+    "categories": [
+        {
+            "name": "SPICES BEGINNING WITH \u201cC\u201d",
+            "color": "yellow",
+            "items": [
+                "Cardamom",
+                "Clove",
+                "Coriander",
+                "Cumin"
+            ]
+        },
+        {
+            "name": "TERMS OF ENDEARMENT",
+            "color": "green",
+            "items": [
+                "Boo",
+                "Honey",
+                "Sugar",
+                "Sweetie"
+            ]
+        },
+        {
+            "name": "THINGS WITH WINGS",
+            "color": "blue",
+            "items": [
+                "Airplane",
+                "Angel",
+                "Bird",
+                "Pegasus"
+            ]
+        },
+        {
+            "name": "SPICE GIRLS",
+            "color": "purple",
+            "items": [
+                "Baby",
+                "Ginger",
+                "Posh",
+                "Scary"
+            ]
+        }
+    ]
+}

@@ -2,6 +2,9 @@ let stompClient = null;
 let currentPuzzleWords = [];
 let solvedCategories = []
 
+const colorMap = new Map([['blue', '#B0C4EF'], ['yellow', '#F9DF6D'],
+    ['purple', '#BA81C5'], ['green', '#A0C35A']]);
+
 
 function connectToRoom() {
     const pathParts = window.location.pathname.split('/');
@@ -38,6 +41,11 @@ function connectToRoom() {
             console.log('Message received on /broadcast/room:', message.body);
             const updatedPlayers = JSON.parse(message.body);
             updatePlayerListUI(updatedPlayers);
+        });
+
+        // Subscription for puzzle update
+        stompClient.subscribe('/broadcast/room/' + roomId + 'puzzle-update', (message) => {
+            this.onNewPuzzleRecived(JSON.parse(message.body))
         });
 
         // Subscription for guess submit results
@@ -88,6 +96,43 @@ function copyGameCode()
         });
 }
 
+function loadNextPuzzle()
+{
+    console.log("LOADING NEXT PUZZLE");
+    const pathParts = window.location.pathname.split('/');
+    const roomId = pathParts[pathParts.length - 1];
+
+    const playerUID = sessionStorage.getItem('playerUid');
+
+    const requestBody = {
+        roomId: roomId,
+        playerId: playerUID
+    };
+
+    console.log(requestBody);
+
+    fetch('/new-puzzle', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+    })
+        .then(response => {
+            if (response.ok) {
+                console.log("Next puzzle requested successfully.");
+            } else if (response.status === 404) {
+                console.error("Room not found.");
+            } else {
+                console.error("Unexpected error.");
+            }
+        })
+        .catch(error => {
+            console.error("Error requesting next puzzle:", error);
+        });
+}
+
+
 function renderPuzzle() {
     const pathParts = window.location.pathname.split('/');
     const roomId = pathParts[pathParts.length - 1]; // assumes URL like /room/abc123
@@ -130,6 +175,9 @@ function onTileSelected(tile)
 }
 
 function createPuzzleGrid(unsolvedWords, solvedCategories) {
+
+    console.log("SOLVED: " + solvedCategories);
+    console.log("UNSOLVED: " + unsolvedWords);
     const container = document.getElementById('grid-container');
     container.innerHTML = ''; // Clear old grid if present
 
@@ -141,21 +189,34 @@ function createPuzzleGrid(unsolvedWords, solvedCategories) {
     grid.style.justifyContent = 'center';
     grid.style.marginTop = '2rem';
 
-    solvedCategories.forEach(category => {
-        const solvedTile = document.createElement('div');
-        solvedTile.className = 'solved-tile';
-        solvedTile.innerText = category.name;
-        solvedTile.style.background = category.color; // Use the category's color
-        solvedTile.style.color = '#000'; // Text color (white for contrast)
-        solvedTile.style.gridColumn = 'span 4'; // Span all 4 columns
-        solvedTile.style.borderRadius = '8px';
-        solvedTile.style.padding = '1rem';
-        solvedTile.style.textAlign = 'center';
-        solvedTile.style.fontWeight = 'bold';
-        solvedTile.style.userSelect = 'none';
+    if (solvedCategories && solvedCategories.length > 0) {
+        solvedCategories.forEach(category => {
+            if (!category || !category.items || !Array.isArray(category.items)) {
+                console.warn("Invalid category format:", category);
+                return; // skip invalid
+            }
 
-        grid.appendChild(solvedTile);
-    });
+            const solvedTile = document.createElement('div');
+            solvedTile.className = 'solved-tile';
+
+            solvedTile.innerHTML = `
+            <div style="font-size: 1.2rem; margin-bottom: 0.5rem;">${category.name}</div>
+            <div style="font-size: 0.9rem;">${category.items.join(', ')}</div>
+        `;
+
+            solvedTile.style.background = colorMap.get(category.color) || '#ddd'; // fallback color
+            solvedTile.style.color = '#000';
+            solvedTile.style.gridColumn = 'span 4';
+            solvedTile.style.borderRadius = '8px';
+            solvedTile.style.padding = '1rem';
+            solvedTile.style.textAlign = 'center';
+            solvedTile.style.fontWeight = 'bold';
+            solvedTile.style.userSelect = 'none';
+
+            grid.appendChild(solvedTile);
+        });
+    }
+
 
     // Now add unsolved word tiles
     unsolvedWords.forEach(word => {
@@ -236,6 +297,13 @@ function addHistoryEntry(historyJSON)
     historyList.appendChild(listItem);
 }
 
+function clearHistory()
+{
+    const historyList = document.getElementById('guess-history');
+    historyList.innerHTML = ''; // Remove all child elements
+}
+
+
 
 function toggleResultAnimation(submitterId, correct)
 {
@@ -248,25 +316,40 @@ function toggleResultAnimation(submitterId, correct)
     }
 }
 
+function onNewPuzzleRecived(updatedStateJson)
+{
+    console.log(updatedStateJson)
+    currentPuzzleWords = updatedStateJson.puzzleStateDTO.unSolvedWords;
+    solvedCategories = updatedStateJson.puzzleStateDTO.currentSolved;
+
+    shuffle(currentPuzzleWords);
+    clearHistory()
+    updatePlayerListUI(updatedStateJson.playerStateDTO.players)
+    createPuzzleGrid(currentPuzzleWords, solvedCategories);
+}
+
 function onSubmitResultReceived(resultJson)
 {
     // cache state
     const updatedPuzzleState = resultJson.updatedPuzzleState;
-    currentPuzzleWords = updatedPuzzleState.unsolvedWords;
+    currentPuzzleWords = updatedPuzzleState.unSolvedWords;
     solvedCategories = updatedPuzzleState.currentSolved;
+
+    shuffle(currentPuzzleWords);
 
     addHistoryEntry(resultJson.history);
     updatePlayerListUI(resultJson.playerState.players);
     toggleResultAnimation(resultJson.guessSubmitter.uid, resultJson.correct);
 
     if(resultJson.correct)
-        createPuzzleGrid(updatedPuzzleState.unsolvedWords, updatedPuzzleState.currentSolved);
+        createPuzzleGrid(updatedPuzzleState.unSolvedWords, updatedPuzzleState.currentSolved);
 
 }
 
 
 function shuffle(array)
 {
+    console.log("shuffle arr: " + array);
     for (let i = array.length - 1; i > 0; i--)
     {
         const j = Math.floor(Math.random() * (i + 1));

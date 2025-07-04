@@ -150,6 +150,11 @@
 </head>
 <body>
 
+<!-- WebSocket client dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
+<script src="/puzzle.js" defer></script>
+
 <main>
     <h1>Connections Connect</h1>
     <div id="grid-container"></div>
@@ -161,6 +166,7 @@
 
     <footer class="footer">
         <button onclick="copyGameCode()" id="copy-button">Copy Room Code</button>
+        <button onclick="loadNextPuzzle()" id="next-puzzle-button">Next Puzzle</button>
     </footer>
 
 
@@ -181,10 +187,7 @@
     </div>
 </aside>
 
-<!-- WebSocket client dependencies -->
-<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@stomp/stompjs@7.0.0/bundles/stomp.umd.min.js"></script>
-<script src="/puzzle.js" defer></script>
+
 
 </body>
 </html>

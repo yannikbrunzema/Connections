@@ -8,14 +8,14 @@ import java.util.List;
 public class PuzzleStateDTO
 {
     private int numSolvedCategories;
-    private List<String> unsolvedWords;
+    private List<String> unSolvedWords;
     private List<Puzzle.Category> currentSolved;
     private boolean puzzleSolved;
 
     public PuzzleStateDTO(PuzzleService service)
     {
         this.numSolvedCategories = service.getNumSolvedCategories();
-        this.unsolvedWords = service.getUnsolvedWords();
+        this.unSolvedWords = service.getUnsolvedWords();
         this.currentSolved = service.getCurrentSolved();
         this.puzzleSolved = service.isPuzzleSolved();
     }
@@ -25,9 +25,9 @@ public class PuzzleStateDTO
         return numSolvedCategories;
     }
 
-    public List<String> getUnsolvedWords()
+    public List<String> getUnSolvedWords()
     {
-        return unsolvedWords;
+        return unSolvedWords;
     }
 
     public List<Puzzle.Category> getCurrentSolved()

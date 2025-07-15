@@ -49,6 +49,26 @@ public class Room
         return true;
     }
 
+    private int getTotalGuessesRemaining()
+    {
+        int count = 0;
+        for (Player player : players)
+        {
+            count += player.getGuessesRemaining();
+        }
+        return count;
+    }
+
+    public boolean hasLost()
+    {
+        return getTotalGuessesRemaining() == 0;
+    }
+
+    public boolean hasWon()
+    {
+        return this.roomPuzzleService.isPuzzleSolved();
+    }
+
     private void resetRoomState()
     {
         this.OnPlayerCountChanged();

@@ -34,7 +34,7 @@ public class WebSocketController
         var correct = room.SubmitGuess(player, request.getGuess());
         var history = room.getHistory();
         var result = new GuessSubmitResult(new PlayerStateDTO(room.getRoomPlayers()), new PuzzleStateDTO(room.getRoomPuzzleService()),
-                player, request.getGuess(), correct, (history.get(history.size()-1)));
+                player, request.getGuess(), correct, (history.get(history.size()-1)), room.hasLost(), room.hasWon());
         messagingTemplate.convertAndSend("/broadcast/room/" + roomId + "/submit" , result);
     }
 }

@@ -76,6 +76,11 @@ function updatePlayerListUI(players) {
     players.forEach(player => {
         const li = document.createElement('li');
         li.id = player.uid;
+
+        if (player && player.uid === sessionStorage.getItem("playerUid")) {
+            sessionStorage.setItem("guessesRemaining", String(player.guessesRemaining));
+        }
+
         li.textContent = player.name + " Guesses Remaining: " + player.guessesRemaining;
         playerListElem.appendChild(li);
     });
@@ -255,6 +260,8 @@ function onSubmitClicked()
         return;
     }
 
+
+
     if (stompClient && stompClient.connected && playerUID) {
         stompClient.publish({
             destination: `/app/room/${roomId}/guess-submit`,
@@ -322,10 +329,18 @@ function onNewPuzzleRecived(updatedStateJson)
     currentPuzzleWords = updatedStateJson.puzzleStateDTO.unSolvedWords;
     solvedCategories = updatedStateJson.puzzleStateDTO.currentSolved;
 
+
     shuffle(currentPuzzleWords);
     clearHistory()
+    updateSubmitButtonState();
     updatePlayerListUI(updatedStateJson.playerStateDTO.players)
     createPuzzleGrid(currentPuzzleWords, solvedCategories);
+}
+
+function setWinLossState(isWin, isLoss)
+{
+    console.log("IS WIN: " + isWin);
+    console.log("IS LOSS: " + isLoss)
 }
 
 function onSubmitResultReceived(resultJson)
@@ -336,14 +351,32 @@ function onSubmitResultReceived(resultJson)
     solvedCategories = updatedPuzzleState.currentSolved;
 
     shuffle(currentPuzzleWords);
-
     addHistoryEntry(resultJson.history);
     updatePlayerListUI(resultJson.playerState.players);
+    updateSubmitButtonState();
     toggleResultAnimation(resultJson.guessSubmitter.uid, resultJson.correct);
+
 
     if(resultJson.correct)
         createPuzzleGrid(updatedPuzzleState.unSolvedWords, updatedPuzzleState.currentSolved);
 
+    setWinLossState(resultJson.isWin, resultJson.isLoss);
+
+}
+
+function updateSubmitButtonState() {
+    const remaining = parseInt(sessionStorage.getItem("guessesRemaining"), 10);
+    const submitButton = document.getElementById("submit-guess-btn");
+
+    if (isNaN(remaining) || remaining <= 0) {
+        submitButton.disabled = true;
+        submitButton.style.opacity = 0.5; // optional styling to indicate it's disabled
+        submitButton.style.cursor = "not-allowed";
+    } else {
+        submitButton.disabled = false;
+        submitButton.style.opacity = 1;
+        submitButton.style.cursor = "pointer";
+    }
 }
 
 
